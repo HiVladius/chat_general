@@ -19,8 +19,7 @@ const obtenerChat = async (req, res) => {
 
   res.json({
     ok: true,
-    miId,
-    mensajesDe,
+    mensajes: last30,
   });
 };
 
