@@ -1,28 +1,23 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import AuthRouter from "../router/AuthRouter";
+import { Router, Switch, Redirect, Route } from "react-router-dom";
+import AuthRouter from "../router/AuthRouter";
 import ChatPages from "../pages/ChatPages";
-import LoginPages from "../pages/LoginPages";
-import RegisterPages from "../pages/RegisterPages";
+import { createBrowserHistory } from "history";
 
-// import "../css/login-register.css";
+
+const history = createBrowserHistory();
 
 function AppRouter() {
   return (
-    <div className="limiter">
-      <div className="container-login100">
-        <div className="wrap-login100 p-t-50 p-b-90">
-          <BrowserRouter>
-            <Routes>
-              {/* <Route path="/auth" element={<AuthRouter />} /> */}
-              <Route path="/auth/login" element={<LoginPages />} />
-              <Route path="/auth/register" element={<RegisterPages />} />
-              <Route path="/" element={<ChatPages />} />
-            </Routes>
-          </BrowserRouter>
-        </div>
+   <Router history={history}>
+      <div>
+        <Switch>
+          <Route path="/auth" component={AuthRouter} />
+          <Route exact path="/" component={ChatPages} />
+          <Redirect to="/" />
+        </Switch>
       </div>
-    </div>
+   </Router>
   );
 }
 
