@@ -1,12 +1,15 @@
-
-import React from 'react';
-import AppRouter from './router/AppRouter';
+import React from "react";
+import AppRouter from "./router/AppRouter";
+import { AuthProvider } from "./auth/AuthContext";
+import { SocketProvider } from "./context/SocketContext";
 
 function App() {
   return (
-    <div>
-      <AppRouter />
-    </div>
+    <AuthProvider>
+      <SocketProvider>
+        <AppRouter />
+      </SocketProvider>
+    </AuthProvider>
   );
 }
 

@@ -10,7 +10,7 @@ const ChatPages = () => {
       <div className="inbox_msg">
         <InboxPeople />
         {
-          (!true) ? <Messages /> : <ChatSelect />
+          (!false) ? <Messages /> : <ChatSelect />
 
         }
         {/* <ChatSelect /> */}

@@ -14,8 +14,8 @@ const obtenerChat = async (req, res) => {
     ],
   })
 
-.sort({ createdAt: "desc" })
-.limit(30);
+    .sort({ createdAt: "desc" })
+    .limit(30);
 
   res.json({
     ok: true,
