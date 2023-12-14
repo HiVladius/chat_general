@@ -6,10 +6,10 @@ import Swal from "sweetalert2";
 const RegisterPages = () => {
   const { register } = useContext(AuthContext);
   const [form, setForm] = useState({
-    name: "Liebe Rugama",
-    email: "correo6@correo.com",
-    password: "myPassword",
-    rememberme: true,
+    name: "",
+    email: "",
+    password: "",
+    rememberme: false,
   });
 
   const onChange = ({ target }) => {

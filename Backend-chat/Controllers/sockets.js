@@ -18,7 +18,18 @@ const usuarioDesconectado = async ( uid = '' ) => {
 
 }
 
+const getUsuarios = async () => {
+    
+        const usuarios = await Usuario
+            .find()
+            .sort('-online');
+    
+        return usuarios;
+    
+    }
+
 module.exports = {
     usuarioConectado,
-    usuarioDesconectado
+    usuarioDesconectado,
+    getUsuarios
 }

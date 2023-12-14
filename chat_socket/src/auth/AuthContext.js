@@ -26,7 +26,7 @@ export function AuthProvider({ children }) {
         name: usuario.nombre,
         email: usuario.email,
       });
-      console.log("Autenticado");
+      
     }
     return resp.ok;
   };
@@ -49,14 +49,13 @@ export function AuthProvider({ children }) {
         name: usuario.nombre,
         email: usuario.email,
       });
-      console.log("Autenticado");
+   
     }
     return resp.msg;
   };
 
   const verifyToken = useCallback(async () => {
     const token = localStorage.getItem("token");
-    console.log(token);
     // Si el token no existe
     if (!token) {
       setAuth({
@@ -80,7 +79,7 @@ export function AuthProvider({ children }) {
         name: usuario.nombre,
         email: usuario.email,
       });
-      console.log("Autenticado");
+      
       return true;
     } else {
       setAuth({
