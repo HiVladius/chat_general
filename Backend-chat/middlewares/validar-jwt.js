@@ -10,14 +10,16 @@ const validarJST = (req, res, next) => {
       });
     }
 
-    const payload = jwt.verify(token, process.env.JWT_KEY);
-    req.uid = payload.uid;
+    const { uid } = jwt.verify(token, process.env.JWT_KEY);
+    req.uid = uid;
 
     next();
+
   } catch (error) {
-    return res.status(401).json({
-      ok: false,
-      msg: "Token no válido",
+    
+      return res.status(401).json({
+        ok: false,
+        msg: "Token no válido",
     });
   }
 };
