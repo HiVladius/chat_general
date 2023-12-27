@@ -39,6 +39,7 @@ export const fetchConToken = async (endpoint, data, method = "GET") => {
       method,
       headers: {
         "Content-type": "application/json",
+        "x-token": token,
       },
       body: JSON.stringify(data),
     });

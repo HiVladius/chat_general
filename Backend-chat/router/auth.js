@@ -1,19 +1,21 @@
 // path: /api/login
 
 const { Router } = require("express");
+const { check } = require("express-validator");
+
+// Controladores
 const {
   crearUsuario,
   loginUsuario,
   revalidarToken,
 } = require("../Controllers/auth");
-const { check } = require("express-validator");
+
 const { validarCampos } = require("../middlewares/validar-campos");
 const { validarJST } = require("../middlewares/validar-jwt");
 
 const router = Router();
 
-router.post(
-  "/new",
+router.post("/new",
   [
     // middLeWares
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
@@ -25,8 +27,7 @@ router.post(
 );
 
 //login
-router.post(
-  "/",
+router.post("/",
   [
     // middlewares
     check("email", "El email es obligatorio").isEmail(),

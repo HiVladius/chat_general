@@ -1,6 +1,9 @@
 import React from "react";
+import { timeMonth } from "../helpers/timeMonth";
 
-function IncomingMSG() {
+function IncomingMSG({ msg }) {
+  const timer = timeMonth(msg.createdAt);
+
   return (
     <div className="incoming_msg">
       <div className="incoming_msg_img">
@@ -11,8 +14,8 @@ function IncomingMSG() {
       </div>
       <div className="received_msg">
         <div className="received_withd_msg">
-          <p>Test which is a new approach to have all solutions</p>
-          <span className="time_date"> 11:01 AM | June 9</span>
+          <p>{msg.mensaje}</p>
+          <span className="time_date"> {timer} </span>
         </div>
       </div>
     </div>

@@ -4,15 +4,14 @@ import { chatReducer } from "./chatReducer";
 export const ChatContext = createContext();
 
 const inicialState = {
-  uid: "",
+  uid: '',
   chatActivo: null, // UID del usuario al que yo quiero enviar mensajes
   usuarios: [], // Todos los usuarios de la BD
   mensajes: [], // El chat seleccionado
 };
 
 export const ChatProvider = ({ children }) => {
-  const [chatState, dispatch] = useReducer(chatReducer, inicialState);
-  
+  const [chatState, dispatch] = useReducer(chatReducer, inicialState); 
   
 
   return (

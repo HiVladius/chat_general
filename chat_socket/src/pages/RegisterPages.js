@@ -6,10 +6,9 @@ import Swal from "sweetalert2";
 const RegisterPages = () => {
   const { register } = useContext(AuthContext);
   const [form, setForm] = useState({
-    name: "",
-    email: "",
-    password: "",
-    rememberme: false,
+    email: "correo@correo.com",
+    password: "123456",
+    name: "Vladimir Rugama",
   });
 
   const onChange = ({ target }) => {
@@ -22,28 +21,31 @@ const RegisterPages = () => {
 
   const onSubmit = async (ev) => {
     ev.preventDefault();
+
     const { name, email, password } = form;
     const ok = await register(name, email, password);
+    
     if (ok !== true) {
       Swal.fire("Error", ok, "error");
     }
-    
   };
 
-  const todoOk = () => {
-    return form.name.length > 0 &&
-      form.email.length > 0 &&
-      form.password.length > 0
-      ? true
-      : false;
-  };
+   const todoOk = () => {
+        return ( 
+            form.email.length > 0 && 
+            form.password.length > 0 &&
+            form.name.length > 0
+        ) ? true : false;
+    }
 
   return (
     <form
       className="login100-form validate-form flex-sb flex-w"
       onSubmit={onSubmit}
     >
-      <span className="login100-form-title mb-3">Chat - Registro</span>
+      <span className="login100-form-title mb-3">
+        Chat - Registro
+      </span>
 
       <div className="wrap-input100 validate-input mb-3">
         <input
@@ -56,8 +58,6 @@ const RegisterPages = () => {
         />
         <span className="focus-input100"></span>
       </div>
-
-     
 
       <div className="wrap-input100 validate-input mb-3">
         <input

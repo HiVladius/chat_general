@@ -1,14 +1,17 @@
 const { response } = require("express");
 const bcrypt = require("bcryptjs");
-const { validationResult } = require("express-validator");
+
 const Usuario = require("../models/usuario");
 const { generarJWT } = require("../helpers/jwt");
 
 const crearUsuario = async (req, res = response) => {
+
   try {
+
     const { email, password } = req.body;
+    
+    // Verificar si el email existe
     const existeEmail = await Usuario.findOne({ email });
-    console.log(existeEmail);
     if (existeEmail) {
       return res.status(400).json({
         ok: false,
@@ -33,6 +36,7 @@ const crearUsuario = async (req, res = response) => {
       usuario,
       token,
     });
+    
   } catch (error) {
     console.log(error);
     res.status(500).json({
@@ -71,6 +75,7 @@ const loginUsuario = async (req, res = response) => {
       usuario: usuariDB,
       token,
     });
+
   } catch (error) {
     console.log(error);
     res.status(500).json({

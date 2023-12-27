@@ -1,15 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../auth/AuthContext";
+
 import Swal from "sweetalert2";
+
+import { AuthContext } from "../auth/AuthContext";
+
 
 const LoginPages = () => {
   const { login } = useContext(AuthContext);
 
   const [form, setForm] = useState({
-    email: "inserte su email",
-    password: "*********",
-    rememberme: true,
+    email: "",
+    password: "",
+    rememberme: false,
   });
 
   useEffect(() => {
@@ -40,12 +43,14 @@ const LoginPages = () => {
 
   const onSubmit = async (ev) => {
     ev.preventDefault();
-    form.rememberme
+    
+    (form.rememberme)
       ? localStorage.setItem("email", form.email)
       : localStorage.removeItem("email");
 
     const { email, password } = form;
     const ok = await login(email, password);
+
     if (!ok) {
       Swal.fire("Error", "Verifique su email y contraseña", "error");
     }
@@ -60,7 +65,9 @@ const LoginPages = () => {
       className="login100-form validate-form flex-sb flex-w"
       onSubmit={onSubmit}
     >
-      <span className="login100-form-title mb-3">Chat - Ingreso</span>
+      <span className="login100-form-title mb-3">
+        Chat - Ingreso
+      </span>
 
       <div className="wrap-input100 validate-input mb-3">
         <input
@@ -87,7 +94,10 @@ const LoginPages = () => {
       </div>
 
       <div className="row mb-3">
-        <div className="col" onClick={() => toogleCheck()}>
+        <div 
+          className="col" 
+          onClick={() => toogleCheck()}>
+            
           <input
             className="input-checkbox100"
             id="ckb1"

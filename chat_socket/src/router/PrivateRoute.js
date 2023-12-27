@@ -7,11 +7,12 @@ export default function PrivateRoute({
   ...rest
 }) {
   return (
-    <Route
-      {...rest}
-      component={(props) =>
-        isAuthenticated ? <Component {...props} /> : <Redirect to="/auth" />
-      }
-    />
+    <Route { ...rest }
+    component={ (props) => (
+        ( isAuthenticated )
+            ? <Component { ...props } />
+            : <Redirect to="/auth" />
+    )} 
+/>
   );
 }

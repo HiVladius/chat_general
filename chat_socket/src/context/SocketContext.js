@@ -4,10 +4,12 @@ import { useSocket } from "../hooks/useSocket";
 import { AuthContext } from "../auth/AuthContext";
 import { ChatContext } from "../chat/ChatContext";
 import { types } from "../types/types";
+import { scrollToBottomAnimated } from "../helpers/scrollToBottom";
 
 export const SocketContext = createContext();
 
 export const SocketProvider = ({ children }) => {
+
   const { socket, online, conectarSocket, desconectarSocket } = useSocket(
     "http://localhost:8080"
   );
@@ -33,6 +35,18 @@ export const SocketProvider = ({ children }) => {
         type: types.usuariosCargados,
         payload: usuarios,
       });
+    });
+  }, [socket, dispatch]);
+
+  //Escuchar los mensajes personales
+  useEffect(() => {
+    socket?.on("mensaje-personal", (mensaje) => {
+      console.log(mensaje);
+      dispatch({
+        type: types.nuevoMensaje,
+        payload: mensaje,
+      });
+      scrollToBottomAnimated("mensajes");
     });
   }, [socket, dispatch]);
 

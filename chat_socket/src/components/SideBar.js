@@ -12,11 +12,14 @@ function SideBar() {
 
   return (
     <div className="inbox_chat">
-      {chatState.usuarios
-        .filter((usuario) => usuario.uid !== uid)
+      {
+      chatState.usuarios
+        .filter(usuario => usuario.uid !== uid)
         .map((usuario) => (
           <SidebarChatItem key={usuario.uid} usuario={usuario} />
-        ))}
+        ))
+        
+        }
 
       {/* <!-- Espacio extra para scroll --> */}
       <div className="extra_space"></div>

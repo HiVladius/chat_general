@@ -32,12 +32,8 @@ export function AuthProvider({ children }) {
   };
 
   const register = async (nombre, email, password) => {
-    const resp = await fetchSinToken(
-      "login/new",
-      { nombre, email, password },
-      "POST"
-    );
-    console.log(resp);
+    const resp = await fetchSinToken("login/new", { nombre, email, password }, "POST");
+
     if (resp.ok) {
       localStorage.setItem("token", resp.token);
       const { usuario } = resp;
@@ -49,7 +45,7 @@ export function AuthProvider({ children }) {
         name: usuario.nombre,
         email: usuario.email,
       });
-   
+      return true;
     }
     return resp.msg;
   };
@@ -72,6 +68,7 @@ export function AuthProvider({ children }) {
     if (resp.ok) {
       localStorage.setItem("token", resp.token);
       const { usuario } = resp;
+      
       setAuth({
         uid: usuario.uid,
         checking: false,
@@ -85,6 +82,8 @@ export function AuthProvider({ children }) {
       setAuth({
         checking: false,
         logged: false,
+        name: null,
+        email: null,
       });
       return false;
     }

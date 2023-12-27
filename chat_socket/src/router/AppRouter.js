@@ -12,7 +12,7 @@ const history = createBrowserHistory();
 
 function AppRouter() {
 
-  const {auth, verifyToken} = useContext(AuthContext);
+  const {auth, verifyToken} = useContext( AuthContext );
    
   useEffect(() => {
     verifyToken();
@@ -26,9 +26,9 @@ function AppRouter() {
    <Router history={history}>
       <div>
         <Switch>
-          {/* <Route path="/auth" component={AuthRouter} /> */}
+         
           <PublicRoute isAuthenticated={auth.logged} path="/auth" component={AuthRouter} />
-          {/* <Route exact path="/" component={ChatPages} /> */}
+         
           <PrivateRoute isAuthenticated={auth.logged} exact path="/" component={ChatPages} />
           <Redirect to="/" />
         </Switch>
