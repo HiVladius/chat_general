@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { SocketContext } from "../context/SocketContext";
 import { AuthContext } from "../auth/AuthContext";
 import { ChatContext } from "../chat/ChatContext";
+import { Send } from "@mui/icons-material";
 
 function SendMessages() {
   const [mensaje, setMensaje] = useState("");
@@ -15,7 +16,9 @@ function SendMessages() {
 
   const onSubmit = (ev) => {
     ev.preventDefault();
-    if (mensaje.length === 0) {return};
+    if (mensaje.length === 0) {
+      return;
+    }
     setMensaje("");
 
     socket.emit("mensaje-personal", {
@@ -38,8 +41,8 @@ function SendMessages() {
           />
         </div>
         <div className="col-sm-3 text-center">
-          <button className="msg_send_btn mt-3" type="submit">
-            enviar
+          <button className="icon-button mt-2" type="submit">
+            <Send className="custom-icon" />
           </button>
         </div>
       </div>

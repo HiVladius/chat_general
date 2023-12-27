@@ -15,7 +15,7 @@ function IncomingMSG({ msg }) {
       <div className="received_msg">
         <div className="received_withd_msg">
           <p>{msg.mensaje}</p>
-          <span className="time_date"> {timer} </span>
+          <span className="time_date">{timer}</span>
         </div>
       </div>
     </div>

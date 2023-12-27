@@ -134,9 +134,10 @@ img {
 
 .received_withd_msg p {
     background: #ebebeb none repeat scroll 0 0;
-    border-radius: 3px;
+    border-radius: 15px;
     color: #646464;
     font-size: 14px;
+    font-family: Lucida Sans;
     margin: 0;
     padding: 5px 10px 5px 12px;
     width: 100%;
@@ -145,8 +146,10 @@ img {
 .time_date {
     color: #747474;
     display: block;
-    font-size: 12px;
+    font-size: 11px;
+    font-family: Lucida Sans;
     margin: 8px 0 0;
+    margin-left: 10px;
 }
 
 .received_withd_msg {
@@ -161,9 +164,10 @@ img {
 }
 
 .sent_msg p {
-    background: #7674FE none repeat scroll 0 0;
-    border-radius: 3px;
+    background: #996998 none repeat scroll 0 0;
+    border-radius: 15px;
     font-size: 14px;
+    font-family: Lucida Sans;
     margin: 0;
     color: #fff;
     padding: 5px 10px 5px 12px;
@@ -194,16 +198,24 @@ img {
     position: relative;
 }
 
-.msg_send_btn {
-    background: #7674FE none repeat scroll 0 0;
-    border: medium none;
+.icon-button {
+    background-color: none;
+    border: none;
     border-radius: 5px;
-    color: #fff;
     cursor: pointer;
-    font-size: 17px;
-    height: 33px;
-    width: 70px;
-}
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-left: 130px;
+  }
+  
+  .custom-icon {
+    color: #a473a3; 
+    height: 40px; 
+    width: 40px;
+  }
 
 
 .msg_history {
