@@ -20,9 +20,6 @@ function SideBar() {
         ))
         
         }
-
-      {/* <!-- Espacio extra para scroll --> */}
-      <div className="extra_space"></div>
     </div>
   );
 }

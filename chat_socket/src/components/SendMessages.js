@@ -35,7 +35,7 @@ function SendMessages() {
           <input
             type="text"
             className="write_msg"
-            placeholder="Mensaje..."
+            placeholder="Type a mesagge..."
             value={mensaje}
             onChange={onChange}
           />
